@@ -13,7 +13,7 @@ const logReducer = (state, action) => {
   switch (action.type) {
     case "field":
       return { ...state, [action.field]: action.value };
-    case "login":
+    case "loginAttempt":
       return { ...state, error: "", isLoading: true };
     case "success":
       return { ...state, isLoggedIn: true };
@@ -39,7 +39,7 @@ const Login2 = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ type: "login" });
+    dispatch({ type: "loginAttempt" });
 
     try {
       await login({ username, password });
